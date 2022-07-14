@@ -41,6 +41,10 @@
   --fill-socialweb-teams-accent: #ffffff;
   /*цвет заливки иконок соцсетей футере*/
   --fill-socialweb-futer-accent: #ffffff;
+  /*цвет фона выезжающего оверлея портфолио*/
+  --overlay-portfolio-color: #2196f3e5;
+  /*контрастный цвет текста оверлея*/
+  --text-color-overlay: #ffffff;
 }
 
 body {
@@ -122,12 +126,27 @@ button {
 .navigations-style li {
   padding: 0;
 }
+.link-marker {
+  position: relative;
+}
+.link-marker::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 4px;
+  bottom: -32px;
+  border-radius: 2px;
+  background-color: var(--text-color-accent);
+  display: block;
+}
+
 .contacts-style {
   padding: 0;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
   margin-left: auto;
+  /* height: 100%; */
 }
 .contacts-style p {
   margin: 0;
@@ -140,6 +159,7 @@ button {
 }
 .contacts-style a {
   display: flex;
+  height: 100%;
   align-items: center;
 }
 .contacts-style li {
@@ -451,11 +471,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding-top: 16px;
-  padding-right: 32px;
-  padding-bottom: 16px;
-  padding-left: 32px; */
-
   --color3: var(--fill-logo-clients);
 }
 .clients-icon:hover,
@@ -534,9 +549,14 @@ button {
 }
 .portfolio-style-list img {
   display: block;
+  z-index: 1;
 }
+
 .portfolio-item a {
   text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .container-portfolio {
   padding: 20px 24px 20px 24px;
@@ -571,9 +591,34 @@ button {
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
+.overlay-box {
+  position: relative;
+  padding: 0;
+  z-index: 2;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--overlay-portfolio-color);
+  padding: 63px 26px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--text-color-overlay);
+  opacity: 0;
+}
+
+.portfolio-style-list .portfolio-item:hover .overlay,
+.portfolio-style-list .portfolio-item:focus .overlay {
+  opacity: 1;
+}
+
 /*Стили подвала*/
 .footer-style {
-  /* min-height: 252px; */
   background-color: var(--bgc-footer);
   padding-top: 60px;
   padding-bottom: 60px;
@@ -691,9 +736,23 @@ button {
   min-width: 528px;
   min-height: 581px;
 
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   background-color: var(--bgc-modal);
+}
+.button-modal-close {
+  margin-left: auto;
+  margin-right: 8px;
+  margin-top: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--bgc-modal);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
