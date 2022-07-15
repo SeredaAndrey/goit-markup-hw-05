@@ -750,18 +750,12 @@ button {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
-/* .modal.is-hidden {
-  transform: scale(0);
-}
-.modal:not(.is-hidden) {
-  transform: scale(1);
-  transition: transform 1250ms cubic-bezier(0.4, 0, 0.2, 1);
-} */
 .modal {
   position: absolute;
   top: 50%;
@@ -775,7 +769,6 @@ button {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   background-color: var(--bgc-modal);
 }
-
 .button-modal-close {
   margin-left: auto;
   margin-right: 8px;
